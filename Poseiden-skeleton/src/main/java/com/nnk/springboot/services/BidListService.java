@@ -1,9 +1,11 @@
 package com.nnk.springboot.services;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BidListService {
 
     private final BidListRepository bidListRepository;
@@ -12,15 +14,15 @@ public class BidListService {
         this.bidListRepository = bidListRepository;
     }
 
-    public List<BidList> findAll() {
+    public List<BidList> getAllBidLists() {
         return bidListRepository.findAll();
     }
 
-    public BidList save(BidList bidList) {
+    public BidList saveBidList(BidList bidList) {
         return bidListRepository.save(bidList);
     }
 
-    public BidList findById(Integer id) {
+    public BidList findBidListById(Integer id) {
         return bidListRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid bid id"));
     }

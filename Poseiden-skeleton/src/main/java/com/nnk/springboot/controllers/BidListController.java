@@ -25,12 +25,13 @@ public class BidListController {
     @RequestMapping("/bidList/list")
     public String home(Model model)
     {
-        model.addAttribute("bidLists", bidListService.findAll());
+        model.addAttribute("bidLists", bidListService.getAllBidLists());
         return "bidList/list";
     }
 
     @GetMapping("/bidList/add")
-    public String addBidForm(BidList bid) {
+    public String addBidForm(Model model) {
+        model.addAttribute("bidList", new BidList());
         return "bidList/add";
     }
 
@@ -42,7 +43,7 @@ public class BidListController {
 
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        BidList bidList = bidListService.findById(id);
+        BidList bidList = bidListService.findBidListById(id);
         model.addAttribute("bidList", bidList);
         return "bidList/update";
     }
