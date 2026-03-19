@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
 import java.sql.Timestamp;
 
 @Entity
@@ -13,52 +14,95 @@ public class BidList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bidlistid")
-    private Integer bidListId;
+    private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "Account is required")
+    @Column(name = "account")
     private String account;
 
-    @NotBlank
+    @NotBlank(message = "Type is required")
+    @Column(name = "type")
     private String type;
 
-    @NotNull
+    @NotNull(message = "Bid quantity is required")
     @Digits(integer = 10, fraction = 2)
+    @Column(name = "bidquantity")
     private Double bidQuantity;
 
-    @NotNull
+    @NotNull(message = "Ask quantity is required")
     @Digits(integer = 10, fraction = 2)
+    @Column(name = "askquantity")
     private Double askQuantity;
 
-    @NotNull
+    @NotNull(message = "Bid is required")
     @Digits(integer = 10, fraction = 2)
+    @Column(name = "bid")
     private Double bid;
 
-    @NotNull
+    @NotNull(message = "Ask is required")
     @Digits(integer = 10, fraction = 2)
+    @Column(name = "ask")
     private Double ask;
 
+    @Column(name = "benchmark")
     private String benchmark;
+
+    @Column(name = "bidlistdate")
     private Timestamp bidListDate;
+
+    @Column(name = "commentary")
     private String commentary;
+
+    @Column(name = "security")
     private String security;
+
+    @Column(name = "status")
     private String status;
+
+    @Column(name = "trader")
     private String trader;
+
+    @Column(name = "book")
     private String book;
+
+    @Column(name = "creationname")
     private String creationName;
+
+    @Column(name = "creationdate")
     private Timestamp creationDate;
+
+    @Column(name = "revisionname")
     private String revisionName;
+
+    @Column(name = "revisiondate")
     private Timestamp revisionDate;
+
+    @Column(name = "dealname")
     private String dealName;
+
+    @Column(name = "dealtype")
     private String dealType;
+
+    @Column(name = "sourcelistid")
     private String sourceListId;
+
+    @Column(name = "side")
     private String side;
 
-    public Integer getBidListId() {
-        return bidListId;
+    // constructor
+    public BidList(String account, String type, Double bidQuantity) {
+        this.account = account;
+        this.type = type;
+        this.bidQuantity = bidQuantity;
+    }
+    // getters & setters
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setBidListId(Integer bidListId) {
-        this.bidListId = bidListId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccount() {
