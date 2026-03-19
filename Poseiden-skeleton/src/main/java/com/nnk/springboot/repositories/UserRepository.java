@@ -1,6 +1,6 @@
 package com.nnk.springboot.repositories;
 
-import java.com.nnk.springboot.domain.User;
+import com.nnk.springboot.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

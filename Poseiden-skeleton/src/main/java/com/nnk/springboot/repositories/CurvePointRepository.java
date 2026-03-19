@@ -1,6 +1,6 @@
 package com.nnk.springboot.repositories;
 
-import java.com.nnk.springboot.domain.CurvePoint;
+import com.nnk.springboot.domain.CurvePoint;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
