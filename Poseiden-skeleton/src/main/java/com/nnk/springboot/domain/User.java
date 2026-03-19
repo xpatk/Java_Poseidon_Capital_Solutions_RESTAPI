@@ -1,4 +1,4 @@
-package com.nnk.springboot.domain;
+package java.com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
