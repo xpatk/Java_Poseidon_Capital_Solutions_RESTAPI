@@ -1,4 +1,4 @@
-package java.com.nnk.springboot.controllers;
+package com.nnk.springboot.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

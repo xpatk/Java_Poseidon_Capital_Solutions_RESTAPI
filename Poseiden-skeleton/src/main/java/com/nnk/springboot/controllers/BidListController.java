@@ -17,13 +17,12 @@ import jakarta.validation.Valid;
 public class BidListController {
 
     private final BidListService bidListService;
-
     public BidListController(BidListService bidListService) {
         this.bidListService = bidListService;
     }
 
     @RequestMapping("/bidList/list")
-    public String home(Model model)
+    public String list(Model model)
     {
         model.addAttribute("bidLists", bidListService.getAllBidLists());
         return "bidList/list";
@@ -37,8 +36,11 @@ public class BidListController {
 
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
-        // TODO: check data valid and save to db, after saving return bid list
-        return "bidList/add";
+        if (result.hasErrors()) {
+            return "bidList/add";
+        }
+        bidListService.saveBidList(bid);
+        return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/update/{id}")
