@@ -7,5 +7,74 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "rating")
 public class Rating {
-    // TODO: Map columns in data table RATING with corresponding java fields
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ratingId")
+    private Integer id;
+
+    @NotBlank(message = "Moodys rating is required.")
+    @Column(name = "moodysrating")
+    private String moodysRating;
+
+    @NotBlank(message = "S&P rating is required")
+    @Column(name = "sandprating")
+    private String sandPRating;
+
+    @NotBlank(message = "Fitch rating is required")
+    @Column(name = "fitchrating")
+    private String fitchRating;
+
+    @NotNull(message = "Order number is required")
+    @Column(name = "ordernumber")
+    private Integer orderNumber;
+
+    public Rating() {
+    }
+
+    public Rating(String moodysRating, String sandPRating, String fitchRating) {
+        this.moodysRating = moodysRating;
+        this.sandPRating = sandPRating;
+        this.fitchRating = fitchRating;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMoodysRating() {
+        return moodysRating;
+    }
+
+    public void setMoodysRating(String moodysRating) {
+        this.moodysRating = moodysRating;
+    }
+
+    public String getSandPRating() {
+        return sandPRating;
+    }
+
+    public void setSandPRating(String sandPRating) {
+        this.sandPRating = sandPRating;
+    }
+
+    public String getFitchRating() {
+        return fitchRating;
+    }
+
+    public void setFitchRating(String fitchRating) {
+        this.fitchRating = fitchRating;
+    }
+
+    public Integer getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 }
