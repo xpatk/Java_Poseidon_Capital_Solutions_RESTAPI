@@ -51,15 +51,21 @@ public class BidListController {
     }
 
     @PostMapping("/bidList/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
-                             BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Bid and return list Bid
+    public String updateBid(@PathVariable("id") Integer id,
+                            @Valid BidList bidList,
+                            BindingResult result,
+                            Model model) {
+        if (result.hasErrors()) {
+            return "bidList/update";
+        }
+        bidList.setId(id);
+        bidListService.saveBidList(bidList);
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Bid by Id and delete the bid, return to Bid list
+        bidListService.delete(id);
         return "redirect:/bidList/list";
     }
 }
