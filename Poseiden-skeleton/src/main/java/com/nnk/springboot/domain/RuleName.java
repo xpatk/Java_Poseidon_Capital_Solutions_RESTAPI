@@ -42,6 +42,18 @@ public class RuleName {
         this.description = description;
     }
 
+    public RuleName(String name, String description, String json,
+                    String template, String sqlStr, String sqlPart) {
+        this.name = name;
+        this.description = description;
+        this.json = json;
+        this.template = template;
+        this.sqlStr = sqlStr;
+        this.sqlPart = sqlPart;
+    }
+
+    // getters and setters
+
     public Integer getId() {
         return id;
     }
