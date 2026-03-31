@@ -1,4 +1,4 @@
-package com.nnk.springboot.config;
+package com.nnk.springboot.services;
 
 public class UserDetailsService {
 

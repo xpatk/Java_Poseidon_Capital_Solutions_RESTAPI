@@ -1,6 +1,5 @@
 package com.nnk.springboot.services;
 
-import com.nnk.springboot.config.UserDetailsService;
 import com.nnk.springboot.repositories.UserRepository;
 
 
