@@ -1,4 +1,8 @@
+/target
+*.iml
+.idea
+.DS_Store
+
+# config
 application.properties
 application-prod.properties
-.idea
-spring-boot-skeleton.iml
