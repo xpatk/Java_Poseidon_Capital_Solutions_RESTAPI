@@ -59,6 +59,16 @@ public class UserService {
     }
 
     /**
+     * Returns a user based on username.
+     *
+     * @param username the username of the user
+     * @return User if found, otherwise null
+     */
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
+
+    /**
      * Deletes a user by its identifier.
      *
      * @param id the User identifier

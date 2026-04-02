@@ -5,32 +5,31 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "rating")
+@Table(name = "Rating")
 public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ratingId")
+    @Column(name = "Id")
     private Integer id;
 
     @NotBlank(message = "Moodys rating is required.")
-    @Column(name = "moodysrating")
+    @Column(name = "moodysRating")
     private String moodysRating;
 
     @NotBlank(message = "S&P rating is required")
-    @Column(name = "sandprating")
+    @Column(name = "sandPRating")
     private String sandPRating;
 
     @NotBlank(message = "Fitch rating is required")
-    @Column(name = "fitchrating")
+    @Column(name = "fitchRating")
     private String fitchRating;
 
     @NotNull(message = "Order number is required")
-    @Column(name = "ordernumber")
+    @Column(name = "orderNumber")
     private Integer orderNumber;
 
-    public Rating() {
-    }
+    public Rating() {}
 
     public Rating(String moodysRating, String sandPRating, String fitchRating) {
         this.moodysRating = moodysRating;
@@ -45,8 +44,6 @@ public class Rating {
         this.fitchRating = fitchRating;
         this.orderNumber = orderNumber;
     }
-
-    // getters and setters
 
     public Integer getId() {
         return id;

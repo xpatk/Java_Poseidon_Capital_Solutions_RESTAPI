@@ -9,12 +9,12 @@ import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "bidlist")
+@Table(name = "bidList")
 public class BidList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bidlistid")
+    @Column(name = "bidListId")
     private Integer id;
 
     @NotBlank(message = "Account is required")
@@ -27,7 +27,7 @@ public class BidList {
 
     @NotNull(message = "Bid quantity is required")
     @DecimalMin("0.0")
-    @Column(name = "bidquantity")
+    @Column(name = "bidQuantity")
     private Double bidQuantity;
 
     @NotNull
@@ -48,7 +48,7 @@ public class BidList {
     @Column(name = "benchmark")
     private String benchmark;
 
-    @Column(name = "bidlistdate")
+    @Column(name = "bidListDate")
     private Timestamp bidListDate;
 
     @Column(name = "commentary")
@@ -66,25 +66,25 @@ public class BidList {
     @Column(name = "book")
     private String book;
 
-    @Column(name = "creationname")
+    @Column(name = "creationName")
     private String creationName;
 
-    @Column(name = "creationdate")
+    @Column(name = "creationDate")
     private Timestamp creationDate;
 
-    @Column(name = "revisionname")
+    @Column(name = "revisionName")
     private String revisionName;
 
-    @Column(name = "revisiondate")
+    @Column(name = "revisionDate")
     private Timestamp revisionDate;
 
-    @Column(name = "dealname")
+    @Column(name = "dealName")
     private String dealName;
 
-    @Column(name = "dealtype")
+    @Column(name = "dealType")
     private String dealType;
 
-    @Column(name = "sourcelistid")
+    @Column(name = "sourceListId")
     private String sourceListId;
 
     @Column(name = "side")

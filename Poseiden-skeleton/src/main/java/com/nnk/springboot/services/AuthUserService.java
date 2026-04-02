@@ -2,12 +2,13 @@ package com.nnk.springboot.services;
 
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.List;
 
 /**
  * Service used by Spring Security to authenticate users.
@@ -20,6 +21,7 @@ public class AuthUserService implements UserDetailsService {
     public AuthUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 
     /**
      * Loads a user by username for authentication.
@@ -38,7 +40,7 @@ public class AuthUserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
-                Collections.singleton(() -> "ROLE_" + user.getRole())
+                List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
         );
     }
 }

@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "rulename")
+@Table(name = "RuleName")
 public class RuleName {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ruleid")
+    @Column(name = "Id")
     private Integer id;
 
     @NotBlank(message = "Name is required")
@@ -26,16 +26,13 @@ public class RuleName {
     @Column(name = "template")
     private String template;
 
-    @Column(name = "sqlstr")
+    @Column(name = "sqlStr")
     private String sqlStr;
 
-    @Column(name = "sqlpart")
+    @Column(name = "sqlPart")
     private String sqlPart;
 
-    // constructors
-
-    public RuleName() {
-    }
+    public RuleName() {}
 
     public RuleName(String name, String description) {
         this.name = name;
@@ -51,8 +48,6 @@ public class RuleName {
         this.sqlStr = sqlStr;
         this.sqlPart = sqlPart;
     }
-
-    // getters and setters
 
     public Integer getId() {
         return id;

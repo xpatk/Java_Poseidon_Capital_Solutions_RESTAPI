@@ -7,13 +7,13 @@ import jakarta.validation.constraints.NotNull;
 
 import java.sql.Timestamp;
 
-
 @Entity
-@Table(name = "trade")
+@Table(name = "Trade")
 public class Trade {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tradeid")
+    @Column(name = "TradeId")
     private Integer id;
 
     @NotBlank(message = "Account is required")
@@ -26,27 +26,28 @@ public class Trade {
 
     @NotNull
     @DecimalMin("0.0")
-    @Column(name = "buyquantity")
+    @Column(name = "buyQuantity")
     private Double buyQuantity;
 
     @NotNull
     @DecimalMin("0.0")
-    @Column(name = "sellquantity")
+    @Column(name = "sellQuantity")
     private Double sellQuantity;
 
     @NotNull
     @DecimalMin("0.0")
-    @Column(name = "buyprice")
+    @Column(name = "buyPrice")
     private Double buyPrice;
 
     @NotNull
     @DecimalMin("0.0")
-    @Column(name = "sellprice")
+    @Column(name = "sellPrice")
     private Double sellPrice;
+
     @Column(name = "benchmark")
     private String benchmark;
 
-    @Column(name = "tradedate")
+    @Column(name = "tradeDate")
     private Timestamp tradeDate;
 
     @Column(name = "security")
@@ -61,35 +62,31 @@ public class Trade {
     @Column(name = "book")
     private String book;
 
-    @Column(name = "creationname")
+    @Column(name = "creationName")
     private String creationName;
 
-    @Column(name = "creationdate")
+    @Column(name = "creationDate")
     private Timestamp creationDate;
 
-    @Column(name = "revisionname")
+    @Column(name = "revisionName")
     private String revisionName;
 
-    @Column(name = "revisiondate")
+    @Column(name = "revisionDate")
     private Timestamp revisionDate;
 
-    @Column(name = "dealname")
+    @Column(name = "dealName")
     private String dealName;
 
-    @Column(name = "dealtype")
+    @Column(name = "dealType")
     private String dealType;
 
-    @Column(name = "sourcelistid")
+    @Column(name = "sourceListId")
     private String sourceListId;
 
     @Column(name = "side")
     private String side;
 
-    // constructors
-
-
-    public Trade() {
-    }
+    public Trade() {}
 
     public Trade(String account, String type, Double buyQuantity) {
         this.account = account;
@@ -101,8 +98,6 @@ public class Trade {
         this.account = account;
         this.type = type;
     }
-
-    // getters and setters
 
     public Integer getId() {
         return id;

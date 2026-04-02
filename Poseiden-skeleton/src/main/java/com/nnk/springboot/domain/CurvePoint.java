@@ -1,23 +1,25 @@
 package com.nnk.springboot.domain;
-import jakarta.validation.constraints.DecimalMin;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
+
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "curvepoint")
+@Table(name = "CurvePoint")
 public class CurvePoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "curvepoint")
+    @Column(name = "Id")
     private Integer id;
 
-    @NotNull(message ="Curve ID is required")
-    @Column(name = "curveid")
+    @NotNull(message = "Curve ID is required")
+    @Column(name = "CurveId")
     private Integer curveId;
 
-    @Column(name = "asofdate")
+    @Column(name = "asOfDate")
     private Timestamp asOfDate;
 
     @NotNull(message = "Term is required")
@@ -30,12 +32,10 @@ public class CurvePoint {
     @Column(name = "value")
     private Double value;
 
-    @Column(name = "creationdate")
+    @Column(name = "creationDate")
     private Timestamp creationDate;
 
-    // constructor
-    public CurvePoint() {
-    }
+    public CurvePoint() {}
 
     public CurvePoint(Integer curveId, Double term, Double value) {
         this.curveId = curveId;
@@ -43,30 +43,28 @@ public class CurvePoint {
         this.value = value;
     }
 
-    // getters and setters
-
-    public Timestamp getCreationDate() {
-        return creationDate;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public Double getTerm() {
-        return term;
-    }
-
-    public Timestamp getAsOfDate() {
-        return asOfDate;
+    public Integer getId() {
+        return id;
     }
 
     public Integer getCurveId() {
         return curveId;
     }
 
-    public Integer getId() {
-        return id;
+    public Timestamp getAsOfDate() {
+        return asOfDate;
+    }
+
+    public Double getTerm() {
+        return term;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public Timestamp getCreationDate() {
+        return creationDate;
     }
 
     public void setId(Integer id) {
@@ -92,5 +90,4 @@ public class CurvePoint {
     public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
     }
-
 }
