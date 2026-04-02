@@ -26,25 +26,21 @@ public class BidList {
     private String type;
 
     @NotNull(message = "Bid quantity is required")
-    @Digits(integer = 10, fraction = 2)
     @DecimalMin("0.0")
     @Column(name = "bidquantity")
     private Double bidQuantity;
 
-    @NotNull(message = "Ask quantity is required")
-    @Digits(integer = 10, fraction = 2)
+    @NotNull
     @DecimalMin("0.0")
-    @Column(name = "askquantity")
+    @Column(name = "askQuantity")
     private Double askQuantity;
 
     @NotNull(message = "Bid is required")
-    @Digits(integer = 10, fraction = 2)
     @DecimalMin("0.0")
     @Column(name = "bid")
     private Double bid;
 
     @NotNull(message = "Ask is required")
-    @Digits(integer = 10, fraction = 2)
     @DecimalMin("0.0")
     @Column(name = "ask")
     private Double ask;

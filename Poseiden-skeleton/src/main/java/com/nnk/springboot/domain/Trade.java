@@ -2,8 +2,8 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.sql.Timestamp;
 
@@ -24,26 +24,25 @@ public class Trade {
     @Column(name = "type")
     private String type;
 
-    @Digits(integer = 10, fraction = 2)
+    @NotNull
     @DecimalMin("0.0")
     @Column(name = "buyquantity")
     private Double buyQuantity;
 
-    @Digits(integer = 10, fraction = 2)
+    @NotNull
     @DecimalMin("0.0")
     @Column(name = "sellquantity")
     private Double sellQuantity;
 
-    @Digits(integer = 10, fraction = 2)
+    @NotNull
     @DecimalMin("0.0")
     @Column(name = "buyprice")
     private Double buyPrice;
 
-    @Digits(integer = 10, fraction = 2)
+    @NotNull
     @DecimalMin("0.0")
     @Column(name = "sellprice")
     private Double sellPrice;
-
     @Column(name = "benchmark")
     private String benchmark;
 
