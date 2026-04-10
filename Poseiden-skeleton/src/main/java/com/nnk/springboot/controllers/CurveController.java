@@ -113,7 +113,7 @@ public class CurveController {
         curvePoint.setId(id);
         logger.info("Updating CurvePoint id={}", id);
         curvePointService.saveCurvePoint(curvePoint);
-        return "redirect:/curvePoint/list";
+        return "redirect:/curvePoint/list?success";
     }
 
     /**

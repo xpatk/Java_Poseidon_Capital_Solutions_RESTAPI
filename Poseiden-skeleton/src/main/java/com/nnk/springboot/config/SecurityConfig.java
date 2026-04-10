@@ -45,16 +45,19 @@ public class SecurityConfig {
         http
                 .authenticationProvider(authProvider())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                         .requestMatchers("/", "/login").permitAll()
                         .requestMatchers("/user/**").hasRole("ADMIN")
                         .requestMatchers("/secure/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception -> exception
-                        .accessDeniedPage("/error"))
+                        .accessDeniedPage("/403"))
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/", true)
+                        .successHandler((request, response, authentication) -> {
+                            response.sendRedirect("/");
+                        })
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )

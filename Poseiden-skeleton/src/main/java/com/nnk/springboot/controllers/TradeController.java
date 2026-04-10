@@ -82,7 +82,7 @@ public class TradeController {
         trade.setId(id);
         tradeService.saveTrade(trade);
 
-        return "redirect:/trade/list";
+        return "redirect:/trade/list?success";
     }
 
     /**

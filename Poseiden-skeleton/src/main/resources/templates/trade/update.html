@@ -10,40 +10,50 @@
 <body>
 <div class="container mt-5">
 
-    <!-- TITLE -->
     <h2 class="mb-4">Update Trade</h2>
 
-    <!-- FORM -->
     <form th:action="@{/trade/update/{id}(id=${trade.id})}"
           th:object="${trade}"
           method="post">
 
-        <!-- ACCOUNT -->
+        <input type="hidden" th:field="*{id}">
+
         <div class="mb-3">
             <label class="form-label">Account</label>
             <input type="text" th:field="*{account}" class="form-control">
             <div class="text-danger" th:errors="*{account}"></div>
         </div>
 
-        <!-- TYPE -->
         <div class="mb-3">
             <label class="form-label">Type</label>
             <input type="text" th:field="*{type}" class="form-control">
             <div class="text-danger" th:errors="*{type}"></div>
         </div>
 
-        <!-- BUY QUANTITY -->
         <div class="mb-3">
             <label class="form-label">Buy Quantity</label>
-            <input type="number" min="0.01" step="0.01"
-                   th:field="*{buyQuantity}" class="form-control">
+            <input type="number" min="0.0" step="0.01" th:field="*{buyQuantity}" class="form-control">
             <div class="text-danger" th:errors="*{buyQuantity}"></div>
         </div>
 
-        <!-- HIDDEN ID -->
-        <input type="hidden" th:field="*{id}">
+        <div class="mb-3">
+            <label class="form-label">Sell Quantity</label>
+            <input type="number" min="0.0" step="0.01" th:field="*{sellQuantity}" class="form-control">
+            <div class="text-danger" th:errors="*{sellQuantity}"></div>
+        </div>
 
-        <!-- BUTTONS -->
+        <div class="mb-3">
+            <label class="form-label">Buy Price</label>
+            <input type="number" min="0.0" step="0.01" th:field="*{buyPrice}" class="form-control">
+            <div class="text-danger" th:errors="*{buyPrice}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Sell Price</label>
+            <input type="number" min="0.0" step="0.01" th:field="*{sellPrice}" class="form-control">
+            <div class="text-danger" th:errors="*{sellPrice}"></div>
+        </div>
+
         <div class="d-flex gap-2">
             <a href="/trade/list" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Update</button>

@@ -64,7 +64,7 @@ public class RuleNameController {
             return "ruleName/add";
         }
         ruleNameService.saveRuleName(ruleName);
-        return "redirect:/ruleName/list";
+        return "redirect:/ruleName/list?success";
     }
 
     /**

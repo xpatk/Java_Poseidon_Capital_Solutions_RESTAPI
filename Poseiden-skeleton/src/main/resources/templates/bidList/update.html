@@ -5,51 +5,56 @@
 <head>
     <meta charset="utf-8"/>
     <title>Update Bid</title>
-
-    <!-- Bootstrap -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <body>
 <div class="container mt-5">
 
-    <!-- HEADER -->
     <h2 class="mb-4">Update Bid</h2>
 
-    <!-- FORM -->
     <form th:action="@{/bidList/update/{id}(id=${bidList.id})}"
           th:object="${bidList}"
           method="post">
 
-        <!-- hidden ID -->
         <input type="hidden" th:field="*{id}"/>
 
-        <!-- ACCOUNT -->
         <div class="mb-3">
             <label class="form-label">Account</label>
             <input type="text" th:field="*{account}" class="form-control">
             <div class="text-danger" th:errors="*{account}"></div>
         </div>
 
-        <!-- TYPE -->
         <div class="mb-3">
             <label class="form-label">Type</label>
             <input type="text" th:field="*{type}" class="form-control">
             <div class="text-danger" th:errors="*{type}"></div>
         </div>
 
-        <!-- BID QUANTITY -->
         <div class="mb-3">
             <label class="form-label">Bid Quantity</label>
-            <input type="number"
-                   min="0.01"
-                   step="0.01"
-                   th:field="*{bidQuantity}"
-                   class="form-control">
+            <input type="number" min="0.01" step="0.01" th:field="*{bidQuantity}" class="form-control">
             <div class="text-danger" th:errors="*{bidQuantity}"></div>
         </div>
 
-        <!-- BUTTONS -->
+        <div class="mb-3">
+            <label class="form-label">Ask Quantity</label>
+            <input type="number" min="0.01" step="0.01" th:field="*{askQuantity}" class="form-control">
+            <div class="text-danger" th:errors="*{askQuantity}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Bid</label>
+            <input type="number" min="0.01" step="0.01" th:field="*{bid}" class="form-control">
+            <div class="text-danger" th:errors="*{bid}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Ask</label>
+            <input type="number" min="0.01" step="0.01" th:field="*{ask}" class="form-control">
+            <div class="text-danger" th:errors="*{ask}"></div>
+        </div>
+
         <div class="d-flex gap-2">
             <a href="/bidList/list" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Update</button>

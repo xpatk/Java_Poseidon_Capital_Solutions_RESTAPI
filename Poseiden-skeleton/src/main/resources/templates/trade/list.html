@@ -47,6 +47,9 @@
             <th>Account</th>
             <th>Type</th>
             <th>Buy Quantity</th>
+            <th>Sell Quantity</th>
+            <th>Buy Price</th>
+            <th>Sell Price</th>
             <th class="text-center">Action</th>
         </tr>
         </thead>
@@ -57,18 +60,14 @@
             <td th:text="${trade.account}"></td>
             <td th:text="${trade.type}"></td>
             <td th:text="${trade.buyQuantity}"></td>
+            <td th:text="${trade.sellQuantity}"></td>
+            <td th:text="${trade.buyPrice}"></td>
+            <td th:text="${trade.sellPrice}"></td>
             <td class="text-center">
-
                 <a class="btn btn-sm btn-outline-secondary"
-                   th:href="@{/trade/update/{id}(id=${trade.id})}">
-                    Edit
-                </a>
-
+                   th:href="@{/trade/update/{id}(id=${trade.id})}">Edit</a>
                 <a class="btn btn-sm btn-outline-danger"
-                   th:href="@{/trade/delete/{id}(id=${trade.id})}">
-                    Delete
-                </a>
-
+                   th:href="@{/trade/delete/{id}(id=${trade.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

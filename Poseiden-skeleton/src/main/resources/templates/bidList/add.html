@@ -31,6 +31,24 @@
             <div class="text-danger" th:errors="*{bidQuantity}"></div>
         </div>
 
+        <div class="mb-3">
+            <label>Ask Quantity</label>
+            <input type="number" step="0.01" th:field="*{askQuantity}" class="form-control">
+            <div class="text-danger" th:errors="*{askQuantity}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Bid</label>
+            <input type="number" step="0.01" th:field="*{bid}" class="form-control">
+            <div class="text-danger" th:errors="*{bid}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Ask</label>
+            <input type="number" step="0.01" th:field="*{ask}" class="form-control">
+            <div class="text-danger" th:errors="*{ask}"></div>
+        </div>
+
         <div class="d-flex gap-2">
             <a href="/bidList/list" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Add</button>

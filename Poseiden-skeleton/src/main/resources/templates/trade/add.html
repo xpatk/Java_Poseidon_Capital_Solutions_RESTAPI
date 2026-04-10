@@ -55,12 +55,36 @@
                    th:field="*{buyQuantity}" class="form-control" placeholder="Buy Quantity">
             <div class="text-danger" th:errors="*{buyQuantity}"></div>
         </div>
+        <!-- SELL QUANTITY -->
+        <div class="mb-3">
+            <label class="form-label">Sell Quantity</label>
+            <input type="number" min="0.0" step="0.01"
+                   th:field="*{sellQuantity}" class="form-control">
+            <div class="text-danger" th:errors="*{sellQuantity}"></div>
+        </div>
+
+        <!-- BUY PRICE -->
+        <div class="mb-3">
+            <label class="form-label">Buy Price</label>
+            <input type="number" min="0.0" step="0.01"
+                   th:field="*{buyPrice}" class="form-control">
+            <div class="text-danger" th:errors="*{buyPrice}"></div>
+        </div>
+
+        <!-- SELL PRICE -->
+        <div class="mb-3">
+            <label class="form-label">Sell Price</label>
+            <input type="number" min="0.0" step="0.01"
+                   th:field="*{sellPrice}" class="form-control">
+            <div class="text-danger" th:errors="*{sellPrice}"></div>
+        </div>
 
         <!-- BUTTONS -->
         <div class="d-flex gap-2">
             <a href="/trade/list" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Add</button>
         </div>
+
 
     </form>
 
