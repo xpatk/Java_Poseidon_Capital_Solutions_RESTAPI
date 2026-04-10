@@ -1,51 +1,68 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8"/>
-<title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+    <meta charset="utf-8"/>
+    <title>Add Trade</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
+
 <body>
-<div class="container">
+<div class="container mt-5">
 
-	<div class="row">
-		<h2>Add New Trade</h2>
-	</div>
+    <!-- TOP BAR -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <a href="/bidList/list">Bid List</a> |
+            <a href="/curvePoint/list">Curve Points</a> |
+            <a href="/rating/list">Ratings</a> |
+            <a href="/trade/list">Trade</a> |
+            <a href="/ruleName/list">Rule</a>
+        </div>
 
-	<div class="row">
-		<form action="#" th:action="@{/trade/validate}" th:object="${trade}" method="post" class="form-horizontal" style="width: 100%">
-			<div class="form-group">
-				<label for="account" class="col-sm-2 control-label">Account</label>
-				<div class="col-sm-10">
-					<input type="text" th:field="*{account}" id="account" placeholder="Account" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="type" class="col-sm-2 control-label">Type</label>
-				<div class="col-sm-10">
-					<input type="text" th:field="*{type}" id="type" placeholder="Type" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="buyQuantity" class="col-sm-2 control-label">Buy Quantity</label>
-				<div class="col-sm-10">
-					<input type="number" th:field="*{buyQuantity}" id="buyQuantity" placeholder="Buy Quantity" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('buyQuantity')}" th:errors="*{buyQuantity}"></p>
-				</div>
-			</div>
+        <div class="text-end">
 
+            <form th:action="@{/logout}" method="POST" style="display:inline;">
+                <button class="btn btn-sm btn-outline-primary">Logout</button>
+            </form>
+        </div>
+    </div>
 
-			<div class="form-group">
-				<div class="col-sm-12">
-					<a class="btn btn-danger btn-sm" href="/trade/list">Cancel</a>
-					<input class="btn btn-primary btn-sm" type="submit" value="Add Trade">
-				</div>
-			</div>
-		</form>
-	</div>
+    <!-- TITLE -->
+    <h2 class="mb-4">Add New Trade</h2>
+
+    <!-- FORM -->
+    <form th:action="@{/trade/validate}" th:object="${trade}" method="post">
+
+        <!-- ACCOUNT -->
+        <div class="mb-3">
+            <label class="form-label">Account</label>
+            <input type="text" th:field="*{account}" class="form-control" placeholder="Account">
+            <div class="text-danger" th:errors="*{account}"></div>
+        </div>
+
+        <!-- TYPE -->
+        <div class="mb-3">
+            <label class="form-label">Type</label>
+            <input type="text" th:field="*{type}" class="form-control" placeholder="Type">
+            <div class="text-danger" th:errors="*{type}"></div>
+        </div>
+
+        <!-- BUY QUANTITY -->
+        <div class="mb-3">
+            <label class="form-label">Buy Quantity</label>
+            <input type="number" min="0.01" step="0.01"
+                   th:field="*{buyQuantity}" class="form-control" placeholder="Buy Quantity">
+            <div class="text-danger" th:errors="*{buyQuantity}"></div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="d-flex gap-2">
+            <a href="/trade/list" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+
+    </form>
 
 </div>
 </body>

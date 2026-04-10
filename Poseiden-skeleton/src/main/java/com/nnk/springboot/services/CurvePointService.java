@@ -3,6 +3,9 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.repositories.CurvePointRepository;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.util.List;
 
@@ -11,6 +14,8 @@ import java.util.List;
  */
 @Service
 public class CurvePointService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CurvePointService.class);
 
     private final CurvePointRepository curvePointRepository;
 
@@ -29,6 +34,7 @@ public class CurvePointService {
      * @return list of CurvePoint objects
      */
     public List<CurvePoint> getAllCurvePoints() {
+        logger.info("Fetching all CurvePoints");
         return curvePointRepository.findAll();
     }
 
@@ -39,6 +45,7 @@ public class CurvePointService {
      * @return saved CurvePoint entity
      */
     public CurvePoint saveCurvePoint(CurvePoint curvePoint) {
+        logger.info("Saving CurvePoint: {}", curvePoint);
         return curvePointRepository.save(curvePoint);
     }
 
@@ -50,6 +57,7 @@ public class CurvePointService {
      * @throws IllegalArgumentException if CurvePoint is not found
      */
     public CurvePoint findCurvePointById(Integer id) {
+        logger.info("Finding CurvePoint id={}", id);
         return curvePointRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid curvePoint id."));
     }
@@ -60,6 +68,7 @@ public class CurvePointService {
      * @param id CurvePoint identifier
      */
     public void delete(Integer id) {
+        logger.warn("Deleting CurvePoint id={}", id);
         curvePointRepository.deleteById(id);
     }
 }

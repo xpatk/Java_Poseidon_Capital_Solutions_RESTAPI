@@ -25,3 +25,7 @@
 ## Security
 1. Create user service to load user from  database and place in package com.nnk.java.com.nnk.springboot.services
 2. Add configuration class and place in package com.nnk.java.com.nnk.springboot.config
+
+## Testing
+1. user, password: Secure1#
+2. admin, password: Secure1#

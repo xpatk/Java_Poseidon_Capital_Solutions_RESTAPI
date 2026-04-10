@@ -1,7 +1,8 @@
-package com.nnk.springboot.services;
+package com.nnk.springboot.config;
 
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,14 +15,13 @@ import java.util.List;
  * Service used by Spring Security to authenticate users.
  */
 @Service
-public class AuthUserService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public AuthUserService(UserRepository userRepository) {
+    public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
     /**
      * Loads a user by username for authentication.

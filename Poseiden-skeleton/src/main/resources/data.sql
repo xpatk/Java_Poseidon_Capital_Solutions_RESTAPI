@@ -96,7 +96,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users(fullname, username, password, role)
-VALUES ("Administrator", "admin", "$2a$10$dCnmkbXjIVBx12ihYggiPuQ9AH9NVbreq6CwjRkX80COzFHu8X8pq", "ADMIN");
+VALUES ('Administrator', 'admin', '$2a$10$tU3hbs6Htx/vWMqiihlAoONHNw8Lx5ytmUv3kjUwHiSvfA3XFNdDS', 'ADMIN');
 
 INSERT INTO users(fullname, username, password, role)
-VALUES ("User", "user", "$2a$10$dCnmkbXjIVBx12ihYggiPuQ9AH9NVbreq6CwjRkX80COzFHu8X8pq", "USER");
+VALUES ('User', 'user', '$2a$10$tU3hbs6Htx/vWMqiihlAoONHNw8Lx5ytmUv3kjUwHiSvfA3XFNdDS', 'USER');

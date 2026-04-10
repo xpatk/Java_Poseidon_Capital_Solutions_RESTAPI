@@ -18,7 +18,7 @@ public class Rating {
     private String moodysRating;
 
     @NotBlank(message = "S&P rating is required")
-    @Column(name = "sandPRating")
+    @Column(name = "sandp_rating")
     private String sandPRating;
 
     @NotBlank(message = "Fitch rating is required")

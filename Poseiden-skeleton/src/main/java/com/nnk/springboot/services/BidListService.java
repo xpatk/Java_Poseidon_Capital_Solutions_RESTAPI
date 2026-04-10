@@ -1,6 +1,8 @@
 package com.nnk.springboot.services;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
  */
 @Service
 public class BidListService {
+
+    private static final Logger logger = LoggerFactory.getLogger(BidListService.class);
 
     private final BidListRepository bidListRepository;
 
@@ -29,6 +33,7 @@ public class BidListService {
      * @return list of BidList objects
      */
     public List<BidList> getAllBidLists() {
+        logger.info("Fetching all BidLists");
         return bidListRepository.findAll();
     }
 
@@ -39,6 +44,7 @@ public class BidListService {
      * @return saved BidList entity
      */
     public BidList saveBidList(BidList bidList) {
+        logger.info("Saving BidList: {}", bidList);
         return bidListRepository.save(bidList);
     }
 
@@ -50,6 +56,7 @@ public class BidListService {
      * @throws IllegalArgumentException if BidList is not found
      */
     public BidList findBidListById(Integer id) {
+        logger.info("Fetching BidList with id: {}", id);
         return bidListRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid bid id"));
     }
@@ -60,6 +67,7 @@ public class BidListService {
      * @param id BidList identifier
      */
     public void delete(Integer id) {
+        logger.warn("Deleting BidList with id: {}", id);
         bidListRepository.deleteById(id);
     }
 }

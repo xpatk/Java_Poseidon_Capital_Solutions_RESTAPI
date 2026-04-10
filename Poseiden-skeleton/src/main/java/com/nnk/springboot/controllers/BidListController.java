@@ -2,6 +2,8 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.services.BidListService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,7 +22,7 @@ public class BidListController {
 
     private final BidListService bidListService;
 
-
+    private static final Logger logger = LoggerFactory.getLogger(BidListController.class);
     /**
      * Constructor-based dependency injection of BidListService.
      *
@@ -40,6 +42,7 @@ public class BidListController {
     public String list(Model model)
     {
         model.addAttribute("bidLists", bidListService.getAllBidLists());
+        logger.info("User requested BidList list page");
         return "bidList/list";
     }
 
@@ -69,7 +72,7 @@ public class BidListController {
             return "bidList/add";
         }
         bidListService.saveBidList(bid);
-        return "redirect:/bidList/list";
+        return "redirect:/bidList/list?success";
     }
 
     /**

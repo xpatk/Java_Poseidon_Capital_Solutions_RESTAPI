@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jakarta.validation.Valid;
 
@@ -20,6 +22,7 @@ public class CurveController {
 
     private final CurvePointService curvePointService;
 
+    private static final Logger logger = LoggerFactory.getLogger(CurveController.class);
 
     /**
      * Constructor-based dependency injection of CurvePointService.
@@ -39,6 +42,7 @@ public class CurveController {
     @RequestMapping("/curvePoint/list")
     public String home(Model model)
     {
+        logger.info("User requested CurvePoint list");
         model.addAttribute("curvePoints", curvePointService.getAllCurvePoints());
         return "curvePoint/list";
     }
@@ -51,6 +55,7 @@ public class CurveController {
      */
     @GetMapping("/curvePoint/add")
     public String addCurvePointForm(Model model) {
+        logger.info("Opening add CurvePoint form");
         model.addAttribute("curvePoint", new CurvePoint());
         return "curvePoint/add";
     }
@@ -66,8 +71,10 @@ public class CurveController {
     @PostMapping("/curvePoint/validate")
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            logger.warn("Validation failed for CurvePoint: {}", curvePoint);
             return "curvePoint/add";
         }
+        logger.info("Saving new CurvePoint: {}", curvePoint);
         curvePointService.saveCurvePoint(curvePoint);
         return "redirect:/curvePoint/list";
     }
@@ -81,6 +88,7 @@ public class CurveController {
      */
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+        logger.info("Fetching CurvePoint for update, id={}", id);
         CurvePoint curvePoint = curvePointService.findCurvePointById(id);
         model.addAttribute("curvePoint", curvePoint);
         return "curvePoint/update";
@@ -99,9 +107,11 @@ public class CurveController {
     public String updateCurvePoint(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
+            logger.warn("Validation failed while updating CurvePoint id={}", id);
             return "curvePoint/update";
         }
         curvePoint.setId(id);
+        logger.info("Updating CurvePoint id={}", id);
         curvePointService.saveCurvePoint(curvePoint);
         return "redirect:/curvePoint/list";
     }
@@ -114,6 +124,7 @@ public class CurveController {
      */
     @GetMapping("/curvePoint/delete/{id}")
     public String deleteCurvePoint(@PathVariable("id") Integer id) {
+        logger.warn("Deleting CurvePoint id={}", id);
         curvePointService.delete(id);
         return "redirect:/curvePoint/list";
     }

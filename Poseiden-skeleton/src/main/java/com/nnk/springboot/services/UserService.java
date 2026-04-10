@@ -41,8 +41,27 @@ public class UserService {
      * @return saved User entity
      */
     public User saveUser(User user) {
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
+
+        // UPDATE
+        if (user.getId() != null) {
+
+            User existingUser = userRepository.findById(user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + user.getId()));
+
+            // if no password - dont change anything
+            if (user.getPassword() == null || user.getPassword().isBlank()) {
+                user.setPassword(existingUser.getPassword());
+            } else {
+                user.setPassword(encoder.encode(user.getPassword()));
+            }
+
+        } else {
+            // encode and create
+            user.setPassword(encoder.encode(user.getPassword()));
+        }
+
         return userRepository.save(user);
     }
 

@@ -1,10 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 import java.sql.Timestamp;
 
@@ -26,22 +23,22 @@ public class BidList {
     private String type;
 
     @NotNull(message = "Bid quantity is required")
-    @DecimalMin("0.0")
+    @Positive
     @Column(name = "bidQuantity")
     private Double bidQuantity;
 
     @NotNull
-    @DecimalMin("0.0")
+    @Positive
     @Column(name = "askQuantity")
     private Double askQuantity;
 
     @NotNull(message = "Bid is required")
-    @DecimalMin("0.0")
+    @Positive
     @Column(name = "bid")
     private Double bid;
 
     @NotNull(message = "Ask is required")
-    @DecimalMin("0.0")
+    @Positive
     @Column(name = "ask")
     private Double ask;
 
