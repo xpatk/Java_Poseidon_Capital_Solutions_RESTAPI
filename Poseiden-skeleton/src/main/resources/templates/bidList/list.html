@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="utf-8"/>
     <title>Bid List</title>
@@ -10,29 +12,42 @@
 </head>
 
 <body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+    <div class="container-fluid">
+
+        <div class="navbar-nav">
+            <a class="nav-link" href="/bidList/list">Bid</a>
+            <a class="nav-link" href="/curvePoint/list">Curve</a>
+            <a class="nav-link" href="/rating/list">Rating</a>
+            <a class="nav-link" href="/trade/list">Trade</a>
+            <a class="nav-link" href="/ruleName/list">Rule</a>
+        </div>
+
+        <div class="d-flex">
+            <a sec:authorize="isAnonymous()"
+               href="/login"
+               class="btn btn-outline-primary btn-sm">
+                Login
+            </a>
+
+            <form sec:authorize="isAuthenticated()"
+                  th:action="@{/logout}"
+                  method="post"
+                  class="ms-2">
+                <button class="btn btn-primary btn-sm">Logout</button>
+            </form>
+        </div>
+
+    </div>
+</nav>
+
 <div class="container mt-5">
 
     <!-- SUCCESS MESSAGE -->
     <div th:if="${param.success}" class="alert alert-success">
         Bid successfully added
-    </div>
-
-    <!-- TOP BAR -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <a href="/bidList/list">Bid List</a> |
-            <a href="/curvePoint/list">Curve Points</a> |
-            <a href="/rating/list">Ratings</a> |
-            <a href="/trade/list">Trade</a> |
-            <a href="/ruleName/list">Rule</a>
-        </div>
-
-        <div class="text-end">
-
-            <form th:action="@{/logout}" method="POST" style="display:inline;">
-                <button class="btn btn-sm btn-outline-primary">Logout</button>
-            </form>
-        </div>
     </div>
 
     <!-- TITLE -->

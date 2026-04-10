@@ -10,91 +10,81 @@
 
     <style>
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+        }
+
+        .navbar-custom {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .home-card {
-            max-width: 500px;
-            margin: 100px auto;
+            max-width: 520px;
+            margin: 120px auto;
             padding: 40px;
-            border-radius: 12px;
+            border-radius: 16px;
             background: white;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             text-align: center;
         }
 
         .home-title {
-            margin-bottom: 20px;
-            font-weight: 500;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .home-links a {
-            margin: 0 10px;
+            margin: 8px;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom px-4">
+    <div class="container-fluid">
 
-    <!-- TOP BAR -->
-    <div class="d-flex justify-content-between align-items-center mt-3">
-
-        <!-- LEFT NAV -->
-        <div>
-            <a href="/bidList/list">Bid List</a> |
-            <a href="/curvePoint/list">Curve Points</a> |
-            <a href="/rating/list">Ratings</a> |
-            <a href="/trade/list">Trade</a> |
-            <a href="/ruleName/list">Rule</a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="/bidList/list">Bid</a>
+            <a class="nav-link" href="/curvePoint/list">Curve</a>
+            <a class="nav-link" href="/rating/list">Rating</a>
+            <a class="nav-link" href="/trade/list">Trade</a>
+            <a class="nav-link" href="/ruleName/list">Rule</a>
         </div>
 
-        <!-- RIGHT AUTH -->
-        <div>
-
-            <!-- LOGIN -->
+        <div class="d-flex">
             <a sec:authorize="isAnonymous()"
                href="/login"
-               class="btn btn-sm btn-outline-primary">
+               class="btn btn-outline-primary btn-sm">
                 Login
             </a>
 
-            <!-- LOGOUT -->
             <form sec:authorize="isAuthenticated()"
                   th:action="@{/logout}"
                   method="post"
-                  style="display:inline;">
-                <button class="btn btn-sm btn-outline-primary">Logout</button>
+                  class="ms-2">
+                <button class="btn btn-primary btn-sm">Logout</button>
             </form>
-
         </div>
 
     </div>
+</nav>
 
-    <!-- CARD -->
-    <div class="home-card">
+<div class="home-card">
 
-        <h3 class="home-title">Welcome</h3>
+    <h3 class="home-title">Welcome </h3>
 
-        <p class="mb-4">
-            This is your application dashboard.
-        </p>
+    <p class="text-muted mb-4">
+        This is your application dashboard.
+    </p>
 
-        <!-- ACTIONS -->
-        <div class="home-links">
-
-            <a href="/bidList/list" class="btn btn-primary btn-sm">
-                Bid List
-            </a>
-
-            <a href="/user/list"
-               class="btn btn-outline-secondary btn-sm">
-                User Management
-            </a>
-
-        </div>
-
+    <div class="home-links">
+        <a sec:authorize="hasRole('ADMIN')"
+           href="/user/list"
+           class="btn btn-outline-dark btn-sm">
+            User Management
+        </a>
     </div>
 
 </div>

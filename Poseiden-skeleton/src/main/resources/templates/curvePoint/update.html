@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8"/>
@@ -8,6 +9,35 @@
 </head>
 
 <body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+    <div class="container-fluid">
+
+        <div class="navbar-nav">
+            <a class="nav-link" href="/bidList/list">Bid</a>
+            <a class="nav-link" href="/curvePoint/list">Curve</a>
+            <a class="nav-link" href="/rating/list">Rating</a>
+            <a class="nav-link" href="/trade/list">Trade</a>
+            <a class="nav-link" href="/ruleName/list">Rule</a>
+        </div>
+
+        <div class="d-flex">
+            <a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-primary btn-sm">
+                Login
+            </a>
+
+            <form sec:authorize="isAuthenticated()"
+                  th:action="@{/logout}"
+                  method="post"
+                  class="ms-2">
+                <button class="btn btn-primary btn-sm">Logout</button>
+            </form>
+        </div>
+
+    </div>
+</nav>
+
 <div class="container mt-5">
 
     <h2 class="mb-4">Update Curve Point</h2>
