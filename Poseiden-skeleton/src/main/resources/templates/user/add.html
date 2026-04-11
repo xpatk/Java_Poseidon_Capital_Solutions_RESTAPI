@@ -62,12 +62,13 @@
         </div>
 
         <!-- PASSWORD -->
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" th:field="*{password}" class="form-control"
-                   placeholder="Min 8 chars, 1 uppercase, 1 number, 1 symbol" required>
-            <div class="text-danger" th:errors="*{password}"></div>
-        </div>
+        <input type="password"
+               th:field="*{password}"
+               class="form-control"
+               placeholder="Min 8 chars, 1 uppercase, 1 number, 1 symbol"
+               pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+               title="Password must contain at least 8 characters, 1 uppercase letter, 1 number and 1 symbol"
+               required>
 
         <!-- ROLE -->
         <div class="mb-3">
