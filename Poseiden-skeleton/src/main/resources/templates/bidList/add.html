@@ -11,7 +11,6 @@
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
     <div class="container-fluid">
 
@@ -24,14 +23,9 @@
         </div>
 
         <div class="d-flex">
-            <a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-primary btn-sm">
-                Login
-            </a>
+            <a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-primary btn-sm">Login</a>
 
-            <form sec:authorize="isAuthenticated()"
-                  th:action="@{/logout}"
-                  method="post"
-                  class="ms-2">
+            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" class="ms-2">
                 <button class="btn btn-primary btn-sm">Logout</button>
             </form>
         </div>
@@ -47,37 +41,41 @@
 
         <div class="mb-3">
             <label>Account</label>
-            <input type="text" th:field="*{account}" class="form-control">
+            <input type="text" th:field="*{account}" class="form-control" required>
             <div class="text-danger" th:errors="*{account}"></div>
         </div>
 
         <div class="mb-3">
             <label>Type</label>
-            <input type="text" th:field="*{type}" class="form-control">
+            <input type="text" th:field="*{type}" class="form-control" required>
             <div class="text-danger" th:errors="*{type}"></div>
         </div>
 
         <div class="mb-3">
             <label>Bid Quantity</label>
-            <input type="number" min="0.01" step="0.01" th:field="*{bidQuantity}" class="form-control">
+            <input type="number" min="0.01" step="0.01"
+                   th:field="*{bidQuantity}" class="form-control" required>
             <div class="text-danger" th:errors="*{bidQuantity}"></div>
         </div>
 
         <div class="mb-3">
             <label>Ask Quantity</label>
-            <input type="number" step="0.01" th:field="*{askQuantity}" class="form-control">
+            <input type="number" min="0.01" step="0.01"
+                   th:field="*{askQuantity}" class="form-control" required>
             <div class="text-danger" th:errors="*{askQuantity}"></div>
         </div>
 
         <div class="mb-3">
             <label>Bid</label>
-            <input type="number" step="0.01" th:field="*{bid}" class="form-control">
+            <input type="number" min="0.01" step="0.01"
+                   th:field="*{bid}" class="form-control" required>
             <div class="text-danger" th:errors="*{bid}"></div>
         </div>
 
         <div class="mb-3">
             <label>Ask</label>
-            <input type="number" step="0.01" th:field="*{ask}" class="form-control">
+            <input type="number" min="0.01" step="0.01"
+                   th:field="*{ask}" class="form-control" required>
             <div class="text-danger" th:errors="*{ask}"></div>
         </div>
 

@@ -10,7 +10,6 @@
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
     <div class="container-fluid">
 
@@ -23,14 +22,9 @@
         </div>
 
         <div class="d-flex">
-            <a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-primary btn-sm">
-                Login
-            </a>
+            <a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-primary btn-sm">Login</a>
 
-            <form sec:authorize="isAuthenticated()"
-                  th:action="@{/logout}"
-                  method="post"
-                  class="ms-2">
+            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" class="ms-2">
                 <button class="btn btn-primary btn-sm">Logout</button>
             </form>
         </div>
@@ -50,19 +44,21 @@
 
         <div class="mb-3">
             <label class="form-label">Curve ID</label>
-            <input type="number" th:field="*{curveId}" class="form-control">
+            <input type="number" th:field="*{curveId}" class="form-control" required>
             <div class="text-danger" th:errors="*{curveId}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Term</label>
-            <input type="number" step="0.01" min="0.01" th:field="*{term}" class="form-control">
+            <input type="number" step="0.01" min="0.0"
+                   th:field="*{term}" class="form-control" required>
             <div class="text-danger" th:errors="*{term}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Value</label>
-            <input type="number" step="0.01" min="0.01" th:field="*{value}" class="form-control">
+            <input type="number" step="0.01" min="0.0"
+                   th:field="*{value}" class="form-control" required>
             <div class="text-danger" th:errors="*{value}"></div>
         </div>
 

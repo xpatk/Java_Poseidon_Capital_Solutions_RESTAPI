@@ -10,7 +10,6 @@
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
     <div class="container-fluid">
 
@@ -46,25 +45,26 @@
 
         <div class="mb-3">
             <label class="form-label">Moody's Rating</label>
-            <input type="text" th:field="*{moodysRating}" class="form-control">
+            <input type="text" th:field="*{moodysRating}" class="form-control" required>
             <div class="text-danger" th:errors="*{moodysRating}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">S&P Rating</label>
-            <input type="text" th:field="*{sandPRating}" class="form-control">
+            <input type="text" th:field="*{sandPRating}" class="form-control" required>
             <div class="text-danger" th:errors="*{sandPRating}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Fitch Rating</label>
-            <input type="text" th:field="*{fitchRating}" class="form-control">
+            <input type="text" th:field="*{fitchRating}" class="form-control" required>
             <div class="text-danger" th:errors="*{fitchRating}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Order</label>
-            <input type="number" min="1" th:field="*{orderNumber}" class="form-control">
+            <input type="number" min="1"
+                   th:field="*{orderNumber}" class="form-control" required>
             <div class="text-danger" th:errors="*{orderNumber}"></div>
         </div>
 
